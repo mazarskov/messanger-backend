@@ -1,0 +1,36 @@
+curl -X POST http://localhost:8080/register \
+-H "Content-Type: application/json" \
+-d '{
+  "id": "user1",
+  "messaging_public_key": "base64-encoded-messaging-public-key",
+  "auth_public_key": "base64-encoded-auth-public-key",
+  "nickname": "Alice"
+}'
+
+curl -X POST http://localhost:8080/send \
+-H "Content-Type: application/json" \
+-d '{
+  "sender_id": "user1",
+  "receiver_id": "user2",
+  "encrypted_message": "base64-encoded-encrypted-message"
+}'
+
+curl -X GET "http://localhost:8080/messages?user_id=user2"
+
+
+
+curl -X POST http://localhost:8081/register \
+-H "Content-Type: application/json" \
+-d '{"id": "alice", "nickname": "Alice"}'
+
+curl -X POST http://localhost:8081/register \
+-H "Content-Type: application/json" \
+-d '{"id": "bob", "nickname": "Bob"}'
+
+curl -X POST http://localhost:8081/send \
+-H "Content-Type: application/json" \
+-d '{
+    "sender_id": "alice",
+    "receiver_id": "bob",
+    "message": "Hello, Bob!"
+}'
