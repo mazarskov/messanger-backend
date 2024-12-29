@@ -23,7 +23,7 @@ curl -X POST http://localhost:8081/register \
 -H "Content-Type: application/json" \
 -d '{"id": "alice", "nickname": "Alice"}'
 
-curl -X POST http://localhost:8081/register \
+curl -X POST http://localhost:8082/register \
 -H "Content-Type: application/json" \
 -d '{"id": "bob", "nickname": "Bob"}'
 
