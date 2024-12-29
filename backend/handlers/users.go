@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"messanger/backend/database"
 	"messanger/backend/models"
 
 	"github.com/gin-gonic/gin"
@@ -28,4 +29,12 @@ func RegisterUser(c *gin.Context, db *sql.DB) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"status": "user registered"})
+}
+
+func GetUsers(c *gin.Context, db *sql.DB) {
+	var users, err = database.FetchAllItems(database.DB)
+	if err != nil {
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"users": users})
 }

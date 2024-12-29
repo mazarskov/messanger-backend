@@ -25,6 +25,9 @@ func main() {
 	router.GET("/messages", func(c *gin.Context) {
 		handlers.GetMessages(c, database.DB)
 	})
+	router.GET("/printall", func(c *gin.Context) {
+		handlers.GetUsers(c, database.DB)
+	})
 
 	// Start the server
 	router.Run(":8080")
